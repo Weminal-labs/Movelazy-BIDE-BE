@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - compiler
+
+  compiler:
+    image: my-compiler-image
+    volumes:
+      - ./uploads:/uploads
+    # Cấu hình thêm cho compiler nếu cần
+    # Ví dụ: expose port nếu compiler có service HTTP
+    # ports:
+    #   - "4000:4000" 
