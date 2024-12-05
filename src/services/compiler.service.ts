@@ -55,9 +55,10 @@ export const compileCodeService = async (moveFile: string, tomlFile: string) => 
     await fs.promises.access(absoluteTomlFile);
 
     const container = await docker.createContainer({
-      Image: 'ubuntu-aptos:',
+      Image: 'ubuntu-aptos:v0.0.3',
       Cmd: ['sh', '-c', `
         cd /movement
+        source ~/.bashrc
         /root/.local/bin/aptos move compile && tar -czf /output/build.tar.gz build/
       `],
       Tty: false,

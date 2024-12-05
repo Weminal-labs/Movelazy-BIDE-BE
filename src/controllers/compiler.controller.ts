@@ -24,7 +24,7 @@ export const compileCode = async (req: Request, res: Response) => {
         console.error('Error sending file:', err);
       }
       // Cleanup sau khi gửi file
-      await fs.unlink(buildPath).catch(console.error);
+      //await fs.unlink(buildPath).catch(console.error);
     });
 
     // Cleanup input files
